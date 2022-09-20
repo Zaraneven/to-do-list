@@ -14,12 +14,14 @@ const Todo = () => {
     listTasks().then((data) => {
       setTasks(data);
     });
-  }, []);
+  }, [tasks]);
+
+  
 
   return (
     <div className="ui header">
       <AppHeader />
-      <AddTodo />
+      <AddTodo tasks={tasks}  />
       <List tasks={tasks} />
       <Footer />
     </div>

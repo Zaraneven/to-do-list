@@ -4,17 +4,19 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { insertTask } from "../api/todo";
 
 const AddTodo = () => {
-  const [itemInput, setItemInput] = useState("");
-
-  const createTask = () => {
-    insertTask(itemInput);
-  };
+  const [itemInput, setItemInput] = useState('');
+  
+  
 
   const handleSubmit = (e) => {
     setItemInput({
       ...itemInput,
       [e.target.name]: e.target.value,
     });
+  };
+  
+  const createTask = () => {
+    insertTask(itemInput);
   };
 
   return (
@@ -24,7 +26,7 @@ const AddTodo = () => {
         <input type="text" onChange={(e) => handleSubmit(e)} name="text" />
       </div>
       <button
-        onClick={(e) => createTask()}
+        onClick={createTask}
         style={{ width: "50px", height: "47px" }}
       >
         <FontAwesomeIcon icon={faPlus} type="submit" />
