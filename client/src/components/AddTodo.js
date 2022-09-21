@@ -8,25 +8,27 @@ const AddTodo = () => {
   
   
 
-  const handleSubmit = (e) => {
-    setItemInput({
-      ...itemInput,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setItemInput(value)
   };
   
-  const createTask = () => {
-    insertTask(itemInput);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(itemInput) {
+      insertTask( { text: itemInput })
+    }
+    setItemInput('')
   };
 
   return (
     <div className="ui container center aligned" style={{ marginTop: "50px" }}>
     <form>
       <div className="ui right labeled left icon input">
-        <input type="text" onChange={(e) => handleSubmit(e)} name="text" />
+        <input type="text" onChange={(e) => handleChange(e)} name="text" value={itemInput} />
       </div>
       <button
-        onClick={createTask}
+        onClick={handleSubmit}
         style={{ width: "50px", height: "47px" }}
       >
         <FontAwesomeIcon icon={faPlus} type="submit" />
