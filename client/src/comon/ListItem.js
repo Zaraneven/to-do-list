@@ -2,28 +2,27 @@ import React, { useState } from "react";
 import { removeTask, updateTask } from "../api/todo";
 
 const ListItem = ({ task }) => {
-  const [style, setStyle] = useState('')
+  const [style, setStyle] = useState("");
   const [isCompleted, setIsCompleted] = useState(false);
+  
   const deleteTask = () => {
     removeTask(task._id);
   };
-  
 
   const update = () => {
     setIsCompleted(!isCompleted);
     updateTask(task._id, !isCompleted);
-    setStyle('tt')
+    setStyle("tt");
     if (isCompleted) {
-      setStyle('')
+      setStyle("");
     }
-
   };
 
   return (
-    <ul>
-      <li className="list-group-item" id="list">
-        <p id="ff" className={style}>
-          {task.text}
+    <div>
+      <ul>
+        <li className="list-group-item" id="list" onClick={update}>
+          {task.isCompleted ? <div className="tt">{task.text}</div> : task.text}
           <input
             type="checkbox"
             style={{ float: "right" }}
@@ -40,9 +39,9 @@ const ListItem = ({ task }) => {
           >
             <i className="icon red trash" />
           </button>
-        </p>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   );
 };
 
