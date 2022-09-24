@@ -22,7 +22,7 @@ const ListItem = ({ task }) => {
     <div>
       <ul>
         <li className="list-group-item" id="list" onClick={update}>
-          {task.isCompleted ? <div className="tt">{task.text}</div> : task.text}
+          {task.isCompleted ? <span className="tt">{task.text}</span> : task.text}
           <input
             type="checkbox"
             style={{ float: "right" }}
