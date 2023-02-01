@@ -8,6 +8,10 @@ mongoose.connect(config.mongo, {
 }).then(() => console.log('Database connected'))
     .catch(() => console.log('Error connecting to database'));
 
+    app.get('/', (req, res) => {
+        res.send('Hey this is my API running 🥳')
+      })
+
 app.listen(config.port, error => {
     if (error) return console.log(error);
     console.log(`Server is listening on port ${config.port}`);
